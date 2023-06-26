@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 from numpy import sin, cos, arccos, pi, round
-!pip install folium -q
+# !pip install folium -q
 import folium # 지도 관련
 from folium import Marker
 from folium import plugins
