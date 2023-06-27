@@ -1,7 +1,6 @@
 import streamlit as st
 import common
 import matplotlib.pyplot as plt
-from scipy.stats import linregress
 import seaborn as sns
 
 common.page_config()
