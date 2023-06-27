@@ -1,3 +1,5 @@
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
 import streamlit as st
 import common
 import matplotlib.pyplot as plt
