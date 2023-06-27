@@ -9,6 +9,7 @@ common.page_config()
 st.title("PM10 Distribution by Top 5 Cities")
 data1 = common.get_sales()
 
+fig, ax = plt.subplots(figsize=(10,6))
 PM10_Address = data1.groupby('Address').agg({'PM10': 'median'}).sort_values('PM10').reset_index()
 plt.figure(figsize=(12,6))
 sns.barplot(y="Address", x="PM10", data=PM10_Address.head(10))
@@ -38,6 +39,9 @@ CO_Address = data1.groupby('Address').agg({'CO': 'median'}).sort_values('CO').re
 plt.figure(figsize=(12,6))
 sns.barplot(y="Address", x="CO", data=CO_Address.head(10))
 CO = CO_Address.sort_values('CO').head(10)
+
+st.pyplot(fig)
+
 
 top_10 = pd.concat([PM10, PM2_5, SO2, NO2, O3, CO])
 
