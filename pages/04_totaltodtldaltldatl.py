@@ -40,9 +40,6 @@ plt.figure(figsize=(12,6))
 sns.barplot(y="Address", x="CO", data=CO_Address.head(10))
 CO = CO_Address.sort_values('CO').head(10)
 
-st.pyplot(fig)
-
-
 top_10 = pd.concat([PM10, PM2_5, SO2, NO2, O3, CO])
 
 plt.style.use('fivethirtyeight')
@@ -51,6 +48,8 @@ clr = ("blue", "forestgreen", "gold", "red", "purple",'cadetblue','hotpink','ora
 top_10.Address.value_counts().sort_values(ascending=False)[:10].sort_values().plot(kind='barh',color=clr,ax=ax[0])
 ax[0].set_title("Top 10 Cities",size=20)
 ax[0].set_xlabel('Count',size=18)
+
+st.pyplot(fig)
 
 count=top_10['Address'].value_counts()
 groups=list(top_10['Address'].value_counts().index)[:10]
