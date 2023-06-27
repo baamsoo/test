@@ -2,4 +2,4 @@ streamlit-folium
 folium
 seaborn
 plotly
-linregress
+scipy
