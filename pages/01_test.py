@@ -11,19 +11,11 @@ data = common.get_sales()
 
 seoul = folium.Map(location=[37.55138077230307, 126.98712254969668], zoom_start=12)
 
-# 데이터 시각화
-for idx, row in data.iterrows():
-    lat, lon = row['Latitude'], row['Longitude']
-    
-    # CircleMarker를 사용하여 도트맵 표현
-    folium.CircleMarker(
-        location=[lat, lon],
-        radius=1,
-        color='red',
-        fill=True,
-        fill_color='red',
-        fill_opacity=0.6
-    ).add_to(seoul)
+# 위도 경도 DataFrame
+location = df.groupby('Station code')['PM10'].agg([np.mean])
+location['Latitude'] = df['Latitude'].unique()
+location['Longitude'] = df['Longitude'].unique()
 
+folium.Marker([37.4971850, 126.927595], icon=folium.Icon(popup='Dongjak-gu', color='red', icon='glyphicon glyphicon-home')).add_to(seoul)
 
 st_folium(seoul)
