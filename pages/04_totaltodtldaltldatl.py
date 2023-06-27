@@ -9,6 +9,7 @@ common.page_config()
 st.title("PM10 Distribution by Top 5 Cities")
 data1 = common.get_sales()
 
+
 PM10_Address = data1.groupby('Address').agg({'PM10': 'median'}).sort_values('PM10').reset_index()
 plt.figure(figsize=(12,6))
 sns.barplot(y="Address", x="PM10", data=PM10_Address.head(10))
