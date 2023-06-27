@@ -136,4 +136,4 @@ def create_map(df):
 map_data = create_map(df)
 
 st.markdown('<h1>Seoul Air Quality Map</h1>', unsafe_allow_html=True)
-st.markdown(map_data._repr_html_(), unsafe_allow_html=True
+st.markdown(map_data._repr_html_(), unsafe_allow_html=True)
