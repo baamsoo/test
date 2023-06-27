@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 common.page_config()
-
 st.title("Regplot Visualization")
 
 df_summary = common.get_sales()
