@@ -28,4 +28,8 @@ lp.set_ylabel("Average PM10", fontsize=20)
 lp.set_xlabel("Year and Month", fontsize=20)
 lp.set_xticklabels(lineplot_df["Year and Month"].values, rotation=40, ha="right")
 
-st.pyplot(ax)
+fig, ax = plt.subplots()
+ax.plot(x_values, y_values)
+
+# Streamlit 앱에 그래프 출력
+st.pyplot(fig)
