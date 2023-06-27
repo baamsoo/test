@@ -9,11 +9,6 @@ st.title("Dot Map Visualization")
 
 data = common.get_sales()
 
-# # 위도 경도 DataFrame
-# location = df.groupby('Station code')['PM10'].agg([np.mean])
-# location['Latitude'] = df['Latitude'].unique()
-# location['Longitude'] = df['Longitude'].unique()
-
 seoul = folium.Map(location=[37.55138077230307, 126.98712254969668], zoom_start=12)
 
 # markers = 999
