@@ -21,15 +21,12 @@ lineplot_df["PM10avg"] = lineplot_df.groupby(["Year and Month"]).PM10.transform(
 
 lineplot_df.drop_duplicates(subset="Year and Month", inplace=True)
 
-ax = plt.figure(figsize=(20,10), constrained_layout=True)
-ax.suptitle("Average PM10 for all districts (2017-2019)", fontsize=20, fontweight="bold")
-lp = sns.lineplot(x=lineplot_df["Year and Month"], y=lineplot_df["PM10avg"], sort=False)
+fig, ax = plt.subplots(figsize=(20, 10), constrained_layout=True)
+fig.suptitle("Average PM10 for all districts (2017-2019)", fontsize=20, fontweight="bold")
+lp = sns.lineplot(x=lineplot_df["Year and Month"], y=lineplot_df["PM10avg"], sort=False, ax=ax)
 lp.set_ylabel("Average PM10", fontsize=20)
 lp.set_xlabel("Year and Month", fontsize=20)
 lp.set_xticklabels(lineplot_df["Year and Month"].values, rotation=40, ha="right")
-
-fig, ax = plt.subplots()
-ax.plot(x_values, y_values)
 
 # Streamlit 앱에 그래프 출력
 st.pyplot(fig)
