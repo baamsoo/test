@@ -3,3 +3,4 @@ folium
 seaborn
 plotly
 scipy
+pandas
