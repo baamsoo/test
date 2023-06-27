@@ -56,4 +56,6 @@ for i in range(len(location)):
 folium.Marker([37.4971850, 126.927595], icon=folium.Icon(popup='Dongjak-gu', color='red', icon='glyphicon glyphicon-home')).add_to(seoul)
 folium.Marker([loc_h, loc_v], icon=folium.Icon(popup='test', color='blue', icon='glyphicon glyphicon-home')).add_to(seoul)
 
+seoul.fit_bounds(seoul.get_bounds())
+
 st_folium(seoul)
