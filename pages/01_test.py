@@ -13,7 +13,6 @@ data = common.get_sales()
 
 seoul = folium.Map(location=[37.55138077230307, 126.98712254969668], zoom_start=12)
 
-# 위도 경도 DataFrame
 location = data.groupby('Station code')['PM10'].agg([np.mean])
 location['Latitude'] = data['Latitude'].unique()
 location['Longitude'] = data['Longitude'].unique()
