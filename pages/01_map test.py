@@ -9,12 +9,12 @@ st.title("Dot Map Visualization")
 
 data = common.get_sales()
 
-# 지도 초기화
-map_korea = folium.Map(location=[36.5, 127.5], zoom_start=7)
+# Map
+seoul = folium.Map(location=[37.55138077230307, 126.98712254969668], zoom_start=12)
 
 # 데이터 시각화
 for idx, row in data.iterrows():
-    lat, lon = row['latitude'], row['longitude']
+    lat, lon = row['Latitude'], row['Longitude']
     
     # CircleMarker를 사용하여 도트맵 표현
     folium.CircleMarker(
@@ -24,8 +24,8 @@ for idx, row in data.iterrows():
         fill=True,
         fill_color='red',
         fill_opacity=0.6
-    ).add_to(map_korea)
+    ).add_to(seoul)
 
 # https://github.com/randyzwitch/streamlit-folium/blob/master/examples/streamlit_app.py
 # 지도 출력
-st_folium(map_korea)
+st_folium(seoul)
