@@ -11,45 +11,31 @@ data1 = common.get_sales()
 
 fig, ax = plt.subplots(figsize=(10,6))
 PM10_Address = data1.groupby('Address').agg({'PM10': 'median'}).sort_values('PM10').reset_index()
-plt.figure(figsize=(12,6))
-sns.barplot(y="Address", x="PM10", data=PM10_Address.head(10))
 PM10 = PM10_Address.sort_values('PM10').head(10)
 
 PM2_5_Address = data1.groupby('Address').agg({'PM2.5': 'median'}).sort_values('PM2.5').reset_index()
-plt.figure(figsize=(12,6))
-sns.barplot(y="Address", x="PM2.5", data=PM2_5_Address.head(10))
 PM2_5 = PM2_5_Address.sort_values('PM2.5').head(10)
 
 SO2_Address = data1.groupby('Address').agg({'SO2': 'median'}).sort_values('SO2').reset_index()
-plt.figure(figsize=(12,6))
-sns.barplot(y="Address", x="SO2", data=SO2_Address.head(10))
 SO2 = SO2_Address.sort_values('SO2').head(10)
 
 NO2_Address = data1.groupby('Address').agg({'NO2': 'median'}).sort_values('NO2').reset_index()
-plt.figure(figsize=(12,6))
-sns.barplot(y="Address", x="NO2", data=NO2_Address.head(10))
 NO2 = NO2_Address.sort_values('NO2').head(10)
 
 O3_Address = data1.groupby('Address').agg({'O3': 'median'}).sort_values('O3').reset_index()
-plt.figure(figsize=(12,6))
-sns.barplot(y="Address", x="O3", data=O3_Address.head(10))
 O3 = O3_Address.sort_values('O3').head(10)
 
 CO_Address = data1.groupby('Address').agg({'CO': 'median'}).sort_values('CO').reset_index()
-plt.figure(figsize=(12,6))
-sns.barplot(y="Address", x="CO", data=CO_Address.head(10))
 CO = CO_Address.sort_values('CO').head(10)
 
 top_10 = pd.concat([PM10, PM2_5, SO2, NO2, O3, CO])
 
 plt.style.use('fivethirtyeight')
-fig,ax=plt.subplots(1,2,figsize=(15,8))
+fig,ax=plt.subplots(figsize=(15,8))
 clr = ("blue", "forestgreen", "gold", "red", "purple",'cadetblue','hotpink','orange','darksalmon','brown')
-top_10.Address.value_counts().sort_values(ascending=False)[:10].sort_values().plot(kind='barh',color=clr,ax=ax[0])
-ax[0].set_title("Top 10 Cities",size=20)
-ax[0].set_xlabel('Count',size=18)
-
-st.pyplot(fig)
+top_10.Address.value_counts().sort_values(ascending=False)[:10].sort_values().plot(kind='barh',color=clr)
+ax.set_title("Top 10 Cities",size=20)
+ax.set_xlabel('Count',size=18)
 
 count=top_10['Address'].value_counts()
 groups=list(top_10['Address'].value_counts().index)[:10]
@@ -60,7 +46,7 @@ type_dict=pd.DataFrame({"group":groups,"counts":counts})
 clr1=('brown','darksalmon','orange','hotpink','cadetblue','purple','red','gold','forestgreen','blue','plum')
 qx = type_dict.plot(kind='pie', y='counts', labels=groups,colors=clr1,autopct='%1.1f%%', pctdistance=0.9, radius=1.2,ax=ax[1])
 plt.legend(loc=0, bbox_to_anchor=(1.15,0.4))
-plt.subplots_adjust(wspace =0.5, hspace =0)
+plt.subplots_adjust(hspace=0.5)
 st.pyplot(fig)
 
 fig, ax = plt.subplots(figsize=(10,6))
