@@ -22,8 +22,11 @@ loc_h = 0
 loc_v = 0
 
 for i in range(len(location)):
-    folium.Circle(location=[location.iloc[i,1], location.iloc[i,2]], radius = location.iloc[i, 0]* 30, color=color_select(location.iloc[i,0]),fill_color='#ffffgg').add_to(seoul)
-    
+    folium.Circle(location=[location.iloc[i,1], location.iloc[i,2]], radius = location.iloc[i, 0]* 30, color=common.color_select(location.iloc[i,0]),fill_color='#ffffgg').add_to(seoul)
+    if common.getDistanceBetweenPointsNew(37.4971850, 126.927595, location.iloc[i,1], location.iloc[i,2]) < markers :
+        markers = common.getDistanceBetweenPointsNew(37.4971850, 126.927595, location.iloc[i,1], location.iloc[i,2])
+        loc_h, loc_v = location.iloc[i,1], location.iloc[i,2]
+        
 folium.Marker([37.4971850, 126.927595], icon=folium.Icon(popup='Dongjak-gu', color='red', icon='glyphicon glyphicon-home')).add_to(seoul)
 folium.Marker([loc_h, loc_v], icon=folium.Icon(popup='test', color='blue', icon='glyphicon glyphicon-home')).add_to(seoul)
 
