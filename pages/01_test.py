@@ -11,6 +11,14 @@ st.title("Dot Map Visualization")
 
 data = common.get_sales()
 
+def color_select(x):
+    if x >= 45:
+        return 'red'
+    elif x >= 40:
+        return 'yellow'
+    else:
+        return 'blue'
+        
 seoul = folium.Map(location=[37.55138077230307, 126.98712254969668], zoom_start=12)
 
 location = data.groupby('Station code')['PM10'].agg([np.mean])
@@ -20,14 +28,6 @@ location['Longitude'] = data['Longitude'].unique()
 markers = 999
 loc_h = 0
 loc_v = 0
-
-def color_select(x):
-    if x >= 45:
-        return 'red'
-    elif x >= 40:
-        return 'yellow'
-    else:
-        return 'blue'
 
 for i in range(len(location)):
     folium.Circle(location=[location.iloc[i,1], location.iloc[i,2]], radius = location.iloc[i, 0]* 30, color=color_select(location.iloc[i,0]),fill_color='#ffffgg').add_to(seoul)
