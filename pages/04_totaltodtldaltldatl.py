@@ -12,13 +12,13 @@ data1 = common.get_sales()
 PM10_Address = data1.groupby('Address').agg({'PM10': 'median'}).sort_values('PM10').reset_index()
 plt.figure(figsize=(12,6))
 sns.barplot(y="Address", x="PM10", data=PM10_Address.head(10))
-
 PM10 = PM10_Address.sort_values('PM10').head(10)
+
 PM2_5_Address = data1.groupby('Address').agg({'PM2.5': 'median'}).sort_values('PM2.5').reset_index()
 plt.figure(figsize=(12,6))
 sns.barplot(y="Address", x="PM2.5", data=PM2_5_Address.head(10))
-
 PM2_5 = PM2_5_Address.sort_values('PM2.5').head(10)
+
 SO2_Address = data1.groupby('Address').agg({'SO2': 'median'}).sort_values('SO2').reset_index()
 plt.figure(figsize=(12,6))
 sns.barplot(y="Address", x="SO2", data=SO2_Address.head(10))
@@ -58,8 +58,6 @@ clr1=('brown','darksalmon','orange','hotpink','cadetblue','purple','red','gold',
 qx = type_dict.plot(kind='pie', y='counts', labels=groups,colors=clr1,autopct='%1.1f%%', pctdistance=0.9, radius=1.2,ax=ax[1])
 plt.legend(loc=0, bbox_to_anchor=(1.15,0.4))
 plt.subplots_adjust(wspace =0.5, hspace =0)
-plt.ioff()
-plt.ylabel('')
 st.pyplot(fig)
 
 fig, ax = plt.subplots(figsize=(10,6))
