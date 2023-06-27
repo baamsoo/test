@@ -2,6 +2,7 @@ import streamlit as st
 import common
 import matplotlib.pyplot as plt
 import seaborn as sns
+from scipy.stats import linregress
 
 common.page_config()
 st.title("Regplot Visualization")
