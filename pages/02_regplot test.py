@@ -17,14 +17,12 @@ df_0 = df_summary.groupby(['date'], as_index=False).agg({'SO2':'mean', 'NO2':'me
 variables = [('NO2', 'PM10'), ('NO2', 'PM2.5'), ('CO', 'PM10'), ('CO', 'PM2.5'),
              ('SO2', 'PM10'), ('SO2', 'PM2.5'), ('O3', 'PM10'), ('O3', 'PM2.5')]
 
-# 그래프 생성
 fig, ax = plt.subplots(4, 2, figsize=(10, 15))
 
 for i, (x_var, y_var) in enumerate(variables):
     row = i // 2
     col = i % 2
 
-    # 회귀선 그리기
     sns.regplot(x=x_var, y=y_var, data=df_0, ax=ax[row, col], ci=99, line_kws={'color': 'red'})
     slope, intercept, r_value, p_value, std_err = linregress(df_0[x_var], df_0[y_var])
     equation = f'R-squared: {r_value**2:.2f}'
