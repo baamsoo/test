@@ -22,15 +22,6 @@ def getDistanceBetweenPointsNew(latitude1, longitude1, latitude2, longitude2):
     )
     return round(distance * 1.609344, 2)
 
-# PM10에 따른 color 변화
-def color_select(x):
-    if x >= 45:
-        return 'red'
-    elif x >= 40:
-        return 'yellow'
-    else:
-        return 'blue'
-
 def get_sales():
     data = pd.read_csv("https://raw.githubusercontent.com/baamsoo/test/main/Measurement_summary.csv")
     data.dropna(inplace=True)
