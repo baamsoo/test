@@ -13,9 +13,9 @@ from folium.plugins import MarkerCluster
 from datetime import datetime
 import plotly.graph_objects as go
 
-# df = pd.read_csv(
-#     "https://raw.githubusercontent.com/baamsoo/test/main/Measurement_summary.csv"
-# )
+df = pd.read_csv(
+    "https://raw.githubusercontent.com/baamsoo/test/main/Measurement_summary.csv"
+)
 
 
 # def rad2deg(radians):
@@ -78,12 +78,6 @@ import plotly.graph_objects as go
 # seoul
 
 
-@st.cache
-def load_data():
-    url = "https://raw.githubusercontent.com/baamsoo/test/main/Measurement_summary.csv"
-    df = pd.read_csv(url)
-    return df
-
 def rad2deg(radians):
     degrees = radians * 180 / pi
     return degrees
@@ -139,8 +133,7 @@ def create_map(df):
 
     return seoul
 
-df = load_data()
 map_data = create_map(df)
 
 st.markdown('<h1>Seoul Air Quality Map</h1>', unsafe_allow_html=True)
-st.markdown(map_data._repr_html_(), unsafe_allow_html=True)
+st.markdown(map_data._repr_html_(), unsafe_allow_html=True
