@@ -28,4 +28,4 @@ lp.set_ylabel("Average PM10", fontsize=20)
 lp.set_xlabel("Year and Month", fontsize=20)
 lp.set_xticklabels(lineplot_df["Year and Month"].values, rotation=40, ha="right")
 
-st.pyplot()
+st.pyplot(plt)
