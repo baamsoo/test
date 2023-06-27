@@ -5,7 +5,6 @@ import seaborn as sns
 from scipy.stats import linregress
 import pandas as pd
 
-st.set_option('deprecation.showPyplotGlobalUse', False)
 
 common.page_config()
 st.title("Average PM10 for all districts (2017-2019) Visualization")
