@@ -19,6 +19,4 @@ folium.CircleMarker([37.4971850, 126.927595],
         fill_opacity=0.6
     ).add_to(seoul)
 
-folium.Marker([37.4971850, 126.927595], icon=folium.Icon(popup='Dongjak-gu', color='red', icon='glyphicon glyphicon-home')).add_to(seoul)
-
 st_folium(seoul)
