@@ -9,7 +9,7 @@ common.page_config()
 st.title("PM10 Distribution by Top 5 Cities")
 data1 = common.get_sales()
 
-top_10 = pd.concat([PM10, PM2_5, SO2, NO2, O3, CO])
+top_10 = pd.concat([PM10, PM2.5, SO2, NO2, O3, CO])
 
 plt.style.use('fivethirtyeight')
 fig,ax=plt.subplots(1,2,figsize=(15,8))
