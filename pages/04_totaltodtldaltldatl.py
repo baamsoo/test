@@ -36,14 +36,16 @@ clr = ("blue", "forestgreen", "gold", "red", "purple",'cadetblue','hotpink','ora
 top_10.Address.value_counts().sort_values(ascending=False)[:10].sort_values().plot(kind='barh',color=clr)
 ax.set_title("Top 10 Cities",size=20)
 ax.set_xlabel('Count',size=18)
+st.pyplot(fig)
 
-count=top_10['Address'].value_counts()
-groups=list(top_10['Address'].value_counts().index)[:10]
-counts=list(count[:10])
-counts.append(count.agg(sum)-count[:10].agg('sum'))
-groups.append('Other')
-type_dict=pd.DataFrame({"group":groups,"counts":counts})
-clr1=('brown','darksalmon','orange','hotpink','cadetblue','purple','red','gold','forestgreen','blue','plum')
+# count=top_10['Address'].value_counts()
+# groups=list(top_10['Address'].value_counts().index)[:10]
+# counts=list(count[:10])
+# counts.append(count.agg(sum)-count[:10].agg('sum'))
+# groups.append('Other')
+# type_dict=pd.DataFrame({"group":groups,"counts":counts})
+# clr1=('brown','darksalmon','orange','hotpink','cadetblue','purple','red','gold','forestgreen','blue','plum')
+
 qx = type_dict.plot(kind='pie', y='counts', labels=groups,colors=clr1,autopct='%1.1f%%', pctdistance=0.9, radius=1.2)
 plt.legend(loc=0, bbox_to_anchor=(1.15,0.4))
 plt.subplots_adjust(hspace=0.5)
