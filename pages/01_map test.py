@@ -14,7 +14,6 @@ data = common.get_sales()
 # location['Latitude'] = df['Latitude'].unique()
 # location['Longitude'] = df['Longitude'].unique()
 
-# Map
 seoul = folium.Map(location=[37.55138077230307, 126.98712254969668], zoom_start=12)
 
 # markers = 999
