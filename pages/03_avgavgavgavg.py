@@ -11,13 +11,13 @@ st.title("Average PM10 for all districts (2017-2019) Visualization")
 lineplot_df = common.get_sales()
 lineplot_df['Measurement date'] = pd.to_datetime(lineplot_df['Measurement date'])
 lineplot_df.set_index('Measurement date', inplace=True)
-lineplot_df.drop({"SO2", "NO2", "O3", "CO", "PM2.5"}, axis=1, inplace=True)
+lineplot_df.drop(["SO2", "NO2", "O3", "CO", "PM2.5"], axis=1, inplace=True)
 
 lineplot_df["Year"] = lineplot_df.index.year
 lineplot_df["Month"] = lineplot_df.index.month
 
 lineplot_df["Year and Month"] = lineplot_df[["Year", "Month"]].astype(str).agg("-".join, axis=1)
-lineplot_df["PM10avg"] = lineplot_df.groupby(["Year and Month"]).PM10.transform("mean")
+lineplot_df["PM10avg"] = lineplot_df.groupby(["Year and Month"])["PM10"].transform("mean")
 
 lineplot_df.drop_duplicates(subset="Year and Month", inplace=True)
 
